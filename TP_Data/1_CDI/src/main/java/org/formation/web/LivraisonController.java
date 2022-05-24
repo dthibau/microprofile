@@ -1,13 +1,13 @@
 package org.formation.web;
 
-import java.util.List;
-
 import javax.ws.rs.GET;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.formation.domain.Livraison;
 import org.formation.service.LivraisonService;
+
+import io.smallrye.mutiny.Multi;
 
 
 public class LivraisonController {
@@ -16,7 +16,7 @@ public class LivraisonController {
 	
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-	public List<Livraison> findAll() {
+	public Multi<Livraison> findAll() {
 		return livraisonService.findAll();
 	}
 

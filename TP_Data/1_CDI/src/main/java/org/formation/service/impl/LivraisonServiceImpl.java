@@ -7,10 +7,8 @@ import java.util.Optional;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
-import org.formation.config.NotificationServiceConfig;
 import org.formation.domain.Livraison;
 import org.formation.domain.Livreur;
 import org.formation.domain.Status;
@@ -23,8 +21,6 @@ import io.smallrye.mutiny.Multi;
 @Logged
 public class LivraisonServiceImpl implements LivraisonService {
 
-	@Inject
-	NotificationServiceConfig notificationServiceConfig;
 	
 	List<Livraison> livraisons;
 	
@@ -41,7 +37,6 @@ public class LivraisonServiceImpl implements LivraisonService {
 	}
 	@Override
 	public Multi<Livraison> findAll() {
-		System.out.println("Notificaiton Service Config " + notificationServiceConfig);
 		return Multi.createFrom().items(livraisons.stream()); 
 	}
 
